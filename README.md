@@ -1,6 +1,6 @@
 [Demo](https://www.youtube.com/watch?v=jArkTgAMA4g)
 
-Projects reffered:
+Projects referred:
 1. https://github.com/Rudrabha/Wav2Lip
 2. https://github.com/TencentARC/GFPGAN
 
