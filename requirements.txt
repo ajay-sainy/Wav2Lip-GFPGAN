@@ -14,3 +14,6 @@ pyyaml
 scipy
 tb-nightly
 yapf
+realesrgan
+
+ffmpeg

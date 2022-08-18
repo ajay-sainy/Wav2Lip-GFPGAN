@@ -5,6 +5,7 @@ import numpy as np
 import os
 import torch
 from basicsr.utils import imwrite
+from tqdm import tqdm
 
 from gfpgan import GFPGANer
 
@@ -36,6 +37,7 @@ def main():
     parser.add_argument('--suffix', type=str, default=None, help='Suffix of the restored faces')
     parser.add_argument('--only_center_face', action='store_true', help='Only restore the center face')
     parser.add_argument('--aligned', action='store_true', help='Input are aligned faces')
+    parser.add_argument('--save_faces', default=False, help='Save the restored faces')
     parser.add_argument(
         '--ext',
         type=str,
@@ -108,7 +110,7 @@ def main():
         bg_upsampler=bg_upsampler)
 
     # ------------------------ restore ------------------------
-    for img_path in img_list:
+    for img_path in tqdm(img_list):
         # read image
         img_name = os.path.basename(img_path)
         print(f'Processing {img_name} ...')
@@ -120,20 +122,21 @@ def main():
             input_img, has_aligned=args.aligned, only_center_face=args.only_center_face, paste_back=True)
 
         # save faces
-        for idx, (cropped_face, restored_face) in enumerate(zip(cropped_faces, restored_faces)):
-            # save cropped face
-            save_crop_path = os.path.join(args.output, 'cropped_faces', f'{basename}_{idx:02d}.png')
-            imwrite(cropped_face, save_crop_path)
-            # save restored face
-            if args.suffix is not None:
-                save_face_name = f'{basename}_{idx:02d}_{args.suffix}.png'
-            else:
-                save_face_name = f'{basename}_{idx:02d}.png'
-            save_restore_path = os.path.join(args.output, 'restored_faces', save_face_name)
-            imwrite(restored_face, save_restore_path)
-            # save comparison image
-            cmp_img = np.concatenate((cropped_face, restored_face), axis=1)
-            imwrite(cmp_img, os.path.join(args.output, 'cmp', f'{basename}_{idx:02d}.png'))
+        if(args.save_faces):
+          for idx, (cropped_face, restored_face) in enumerate(zip(cropped_faces, restored_faces)):
+              # save cropped face
+              save_crop_path = os.path.join(args.output, 'cropped_faces', f'{basename}_{idx:02d}.png')
+              imwrite(cropped_face, save_crop_path)
+              # save restored face
+              if args.suffix is not None:
+                  save_face_name = f'{basename}_{idx:02d}_{args.suffix}.png'
+              else:
+                  save_face_name = f'{basename}_{idx:02d}.png'
+              save_restore_path = os.path.join(args.output, 'restored_faces', save_face_name)
+              imwrite(restored_face, save_restore_path)
+              # save comparison image
+              cmp_img = np.concatenate((cropped_face, restored_face), axis=1)
+              imwrite(cmp_img, os.path.join(args.output, 'cmp', f'{basename}_{idx:02d}.png'))
 
         # save restored img
         if restored_img is not None:
