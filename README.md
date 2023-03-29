@@ -14,12 +14,16 @@ An advanced lip syncing software, allowing you to change the lip movements in a 
 4. Change the file names in the block of code labeled `Synchronize Video and Speech` and run the code block. \
 5. Once 
 
-### Important Reminders
+### Helpful Tip 
 
 - The video file should contain only one face.
-- Every frame of the video must contain the face. 
+- Every frame of the video MUST contain the face (or the program will crash).
+
+### Limitations
+
 - The software will trim the video if audio ends first. To bypass, add a snippet of audio to that makes it longer than the video, then trim the video.
 - You will need to combine the audio and video into a single file after processing. 
+- The software cannot handle extreme poses or face positions.
 
 ### Credits
 
