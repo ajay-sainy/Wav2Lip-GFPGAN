@@ -17,11 +17,11 @@ An advanced lip syncing software, allowing you to change the lip movements in a 
  
 1. There is some weird artifacting around the lips in my output. How do I fix this?
 
-> If your output has odd lip shape or artifacts add the --nosmooth command to the `python inference.py` line in the second code block.
+> If your output has odd lip shape or artifacts, use the --nosmooth command in the second code block.
 
 2. My video contains two speakers / pairs of lips, what do I do? 
 
-> The video file should contain only one face. Simply mask out other faces before uploading your video file.
+> The video file should contain only one face. To handle two faces, mask out one of the faces in your video editor of choice, then process each half seperately. Afterward, recombine the two halfs of the video in your video editor. 
 
 3. I got an error saying a face wasn't detected? What happened?
 
@@ -29,7 +29,7 @@ An advanced lip syncing software, allowing you to change the lip movements in a 
 
 ### Limitations
 
-- The software will trim the video if audio ends first. To bypass, add a snippet of audio to that makes it longer than the video, then trim the video.
+- The software will trim the video if audio ends first. To bypass, add a snippet of blank audio to your audio file to make it longer than the video, then trim the video after processing.
 - You will need to combine the audio and video into a single file after processing. 
 - The software cannot handle extreme poses or face positions.
 
