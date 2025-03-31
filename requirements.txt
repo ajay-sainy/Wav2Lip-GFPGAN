@@ -1,7 +1,6 @@
-librosa==0.10.0
-numpy<1.24.1
+
 opencv-contrib-python>=4.2.0.34
-opencv-python==4.7.0.72
+
 torch>=1.7
 torchvision>=>=0.8.2
 tqdm==4.48
@@ -17,3 +16,16 @@ yapf
 realesrgan
 
 ffmpeg
+Flask==3.1.0
+Flask-CORS==5.0.1
+gTTS==2.5.4
+librosa==0.10.2.post1
+opencv-python==4.11.0
+mediapipe==0.10.8
+requests==2.32.3
+tqdm==4.67.1
+moviepy==1.0.3
+numpy==1.26.4
+pyngrok==7.2.3
+yt-dlp==2025.3.27
+opencv-python-headless==4.5.5.64
