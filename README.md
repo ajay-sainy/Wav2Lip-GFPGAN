@@ -1,15 +1,46 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ajay-sainy/Wav2Lip-GFPGAN/blob/main/Wav2Lip-GFPGAN.ipynb)
+<h1 align="center">wav2lip (High Definition)<br><sup><sub>Alternative to Flawless AI's TrueSync<br>  <sup>Run the code on &nbsp;</sup><a target="_blank" href="https://colab.research.google.com/github/indianajson/wav2lip-HD/blob/main/colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg"/></a> &nbsp; 
+  </sub></sup>
+ </h1>
 
-Combine Lip Sync AI and Face Restoration AI to get ultra high quality videos.
+An advanced lip syncing software, allowing you to change the lip movements in a high resolution video file to match a provided voice from an audio file. This repository contains the code to easily perform the synchronization using the power of Wav2Lip and GFPGAN on Google Colaboratory. 
 
-[Demo Video](https://www.youtube.com/watch?v=jArkTgAMA4g)  
+### How to Use
 
-[![Demo Video](https://img.youtube.com/vi/jArkTgAMA4g/default.jpg)](https://youtu.be/jArkTgAMA4g)
+1. Visit [this link](https://colab.research.google.com/github/indianajson/wav2lip-HD/blob/main/colab.ipynb) to launch the program in Google Colab.
+2. Run the first code block labeled "Installation". This will take 1-2 minutes.
+3. Upload a video file and audio file to the `wav2lip-HD/inputs` folder in Colab.
+4. Change the file names in the block of code labeled `Synchronize Video and Speech` and run the code block. 
+5. Once finished run the code block labeled `Boost the Resolution` to increase the quality of the face.
+6. Download your file from `wav2lip-HD/outputs` likely named `output_0000.mp4`.
 
-Projects referred:
-1. https://github.com/Rudrabha/Wav2Lip
-2. https://github.com/TencentARC/GFPGAN
+### FAQs
+ 
+1. There is some weird artifacting around the lips in my output. How do I fix this?
 
-Video sources:  
-1. https://www.youtube.com/watch?v=39w_zYB7AVM&t=0s
-2. https://www.youtube.com/watch?v=LQCQym6hVMo&t=0s
+> If your output has odd lip shape or artifacts, use the --nosmooth command in the second code block.
+
+2. My video contains two speakers / pairs of lips, what do I do? 
+
+> The video file should contain only one face. To handle two faces, mask out one of the faces in your video editor of choice, then process each half seperately. Afterward, recombine the two halfs of the video in your video editor. 
+
+3. I got an error saying a face wasn't detected? What happened?
+
+> Every frame of the video MUST contain the face or the program will crash. If every frame contains the face, it is possible the program is unable to see the face in certain frames. Try splitting your video and processing it in two parts to see where the issue exists. 
+
+### Limitations
+
+- The software will trim the video if audio ends first. To bypass, add a snippet of blank audio to your audio file to make it longer than the video, then trim the video after processing.
+- You will need to combine the audio and video into a single file after processing. 
+- The software cannot handle extreme poses or face positions.
+
+### Ethical Use Cases
+
+Software like this can be easily abused for unethical and immoral purposes, but there are several ethical use cases for this type of software. 
+
+- *Creating High Quality Dubbings* - This software can be used to make film dubbing more effective, by syncing the lip movement of the actors to the new dubbed audio. 
+- *Modifying Lines of Dialogue* - Directors may choose to modify a line of dialogue in post-production. With this software, the lips can be synced to the new audio without reshooting the scene.
+- *Removing Expletives* - Directors may choose to remove some curse words for the sake of better film rating. With this software, the lips can be synced to the audio without the expletives, hiding the fact that it was removed. 
+
+### Credits
+
+Originally created by [@ajay-sainy](https://github.com/ajay-sainy/), this repository contains an updated Google Colab file for ease of use, as well as, an updated requirements.txt, which is necessary to run the code on today's version of Google Colab. 
